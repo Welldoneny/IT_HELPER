@@ -33,6 +33,6 @@ class PermutationCipher {
         plaintext += matrix[i][j];
       }
     }
-    return plaintext;
+    return plaintext.replaceAll('*', '');
   }
 }
