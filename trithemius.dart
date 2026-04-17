@@ -2,7 +2,7 @@ class Trithemius {
   static const String alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
   /// Шифрование текста методом Тритимуса
-  static String encrypt(String plaintext) {
+  String encrypt(String plaintext) {
     plaintext = plaintext.toUpperCase();
     String ciphertext = '';
 
@@ -21,7 +21,7 @@ class Trithemius {
   }
 
   /// Дешифрование текста
-  static String decrypt(String ciphertext) {
+  String decrypt(String ciphertext) {
     ciphertext = ciphertext.toUpperCase();
     String plaintext = '';
 

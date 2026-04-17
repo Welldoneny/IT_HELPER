@@ -1,4 +1,5 @@
 class PermutationCipher {
+  /// Зашифрование методом Скиталлы
   String encryptSkitalla(String plaintext, int m){
     String ciphertext = "";
     int n = (plaintext.length - 1) ~/ m + 1;
