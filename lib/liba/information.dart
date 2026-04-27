@@ -5,7 +5,7 @@ class Information {
     return log(N) / ln2;
   }
 
-  double Shannon(List<double> P) {
+  double shannon(List<double> P) {
     double tmp = 0;
     for (int i = 0; i < P.length; i++){
       tmp += P[i] * log(P[i]);

@@ -169,8 +169,9 @@ class Caesar {
     List<String> words = withSpaces.split(' ');
     List<String> topWords = [];
     for (String word in words){
-      if (word.length == 1 || word.length == 3)
+      if (word.length == 1 || word.length == 3) {
         topWords.add(word);
+      }
     }
     Map<String, int> topWordsFreq = _countWordFrequencies(topWords);
     var sortedEntries = topWordsFreq.entries.toList()..sort((a, b) => b.value.compareTo(a.value));

@@ -1,5 +1,5 @@
 class Morse {
-  Map<String, String> _morseCode = {
+  final Map<String, String> _morseCode = {
     // Буквы A-Z
     'A': '.-',
     'B': '-...',
