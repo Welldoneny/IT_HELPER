@@ -6,8 +6,8 @@ void main() {
     MaterialApp(
       title: 'IT-Helper',
       home: Scaffold(body: MainPage(null)),
-      themeMode: ThemeMode.dark,
-      darkTheme: ThemeData.dark(),
+      // themeMode: ThemeMode.dark,
+      // darkTheme: ThemeData.dark(),
     ),
   );
 }

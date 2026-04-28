@@ -88,6 +88,9 @@ class Morse {
       }
       morsetext += ' ';
     }
+    if (morsetext.isEmpty) {
+      return '';
+    }
     return morsetext.substring(0, morsetext.length-1);
   }
 
@@ -103,6 +106,9 @@ class Morse {
       }
       plaintext += ' ';
     }
-    return plaintext;
+    if (plaintext.isEmpty) {
+      return '';
+    }
+    return plaintext.substring(0, plaintext.length-1);
   }
 }
