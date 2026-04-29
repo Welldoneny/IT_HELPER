@@ -17,7 +17,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   Topic selectedTopic = Topic.greeting;
   final pages = {
-    Topic.caesar: caesarWidget(),
+    Topic.caesar: CaesarWidget(),
     Topic.bacon: baconWidget(),
     Topic.morse: MorseWidget(),
     Topic.greeting: greetingWidget(),
