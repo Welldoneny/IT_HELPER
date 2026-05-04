@@ -77,6 +77,7 @@ class Morse {
   Map<String, String> get _morseToText =>
       _morseCode.map((key, value) => MapEntry(value, key));
 
+  /// Кодирует текст в Морзе. Поддерживает буквы A-Z, цифры 0-9 и некоторые знаки препинания.
   String encode(String plaintext) {
     plaintext = plaintext.toUpperCase();
     String morsetext = '';
@@ -92,6 +93,7 @@ class Morse {
     return morsetext.substring(0, morsetext.length-1);
   }
 
+  /// Декодирует Морзе в текст. Поддерживает те же символы, что и кодирование.
   String decode(String morsetext) {
     String plaintext = '';
     List<String> words = morsetext.split(' / ');
