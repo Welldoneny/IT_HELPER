@@ -92,17 +92,17 @@ class Morse {
     if (morsetext.isEmpty) {
       return '';
     }
-    return morsetext.substring(0, morsetext.length-1);
+    return morsetext.substring(0, morsetext.length - 1);
   }
 
   /// Декодирует Морзе в текст. Поддерживает те же символы, что и кодирование.
   String decode(String morsetext) {
     String plaintext = '';
     List<String> words = morsetext.split(' / ');
-    for(int i = 0; i < words.length; i++){
+    for (int i = 0; i < words.length; i++) {
       List<String> letters = words[i].split(' ');
-      for(int j = 0; j < letters.length; j++){
-        if(_morseToText.containsKey(letters[j])){
+      for (int j = 0; j < letters.length; j++) {
+        if (_morseToText.containsKey(letters[j])) {
           plaintext += _morseToText[letters[j]]!;
         }
       }
@@ -111,6 +111,6 @@ class Morse {
     if (plaintext.isEmpty) {
       return '';
     }
-    return plaintext.substring(0, plaintext.length-1);
+    return plaintext.substring(0, plaintext.length - 1);
   }
 }

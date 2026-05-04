@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget greetingWidget(){
+Widget greetingWidget() {
   return Column(
     children: [
       Text('Hello, World!'),

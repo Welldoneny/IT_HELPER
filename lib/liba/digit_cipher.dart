@@ -51,13 +51,13 @@ class DigitCipher {
       }
     }
     List<String> digits = ciphertext.split(' ');
-    for(String digit in digits){
-      try{
+    for (String digit in digits) {
+      try {
         int index = int.parse(digit);
         int rows = index ~/ 10;
         int cols = index % 10;
         plaintext += matrix[rows][cols];
-      } catch (e){
+      } catch (e) {
         plaintext += digit;
       }
     }
