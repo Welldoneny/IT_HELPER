@@ -83,8 +83,6 @@ class Morse {
     for (int i = 0; i < plaintext.length; i++) {
       if (_morseCode.containsKey(plaintext[i])) {
         morsetext += _morseCode[plaintext[i]]!;
-      } else {
-        continue; 
       }
       morsetext += ' ';
     }
