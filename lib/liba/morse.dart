@@ -84,7 +84,7 @@ class Morse {
       if (_morseCode.containsKey(plaintext[i])) {
         morsetext += _morseCode[plaintext[i]]!;
       } else {
-        morsetext += '';
+        continue; 
       }
       morsetext += ' ';
     }
