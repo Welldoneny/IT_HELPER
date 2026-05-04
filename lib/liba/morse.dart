@@ -77,6 +77,7 @@ class Morse {
   Map<String, String> get _morseToText =>
       _morseCode.map((key, value) => MapEntry(value, key));
 
+  /// Кодирует текст в Морзе. Поддерживает буквы A-Z, цифры 0-9 и некоторые знаки препинания.
   String encode(String plaintext) {
     plaintext = plaintext.toUpperCase();
     String morsetext = '';
@@ -84,23 +85,24 @@ class Morse {
       if (_morseCode.containsKey(plaintext[i])) {
         morsetext += _morseCode[plaintext[i]]!;
       } else {
-        morsetext += '';
+        continue;
       }
       morsetext += ' ';
     }
     if (morsetext.isEmpty) {
       return '';
     }
-    return morsetext.substring(0, morsetext.length-1);
+    return morsetext.substring(0, morsetext.length - 1);
   }
 
+  /// Декодирует Морзе в текст. Поддерживает те же символы, что и кодирование.
   String decode(String morsetext) {
     String plaintext = '';
     List<String> words = morsetext.split(' / ');
-    for(int i = 0; i < words.length; i++){
+    for (int i = 0; i < words.length; i++) {
       List<String> letters = words[i].split(' ');
-      for(int j = 0; j < letters.length; j++){
-        if(_morseToText.containsKey(letters[j])){
+      for (int j = 0; j < letters.length; j++) {
+        if (_morseToText.containsKey(letters[j])) {
           plaintext += _morseToText[letters[j]]!;
         }
       }
@@ -109,6 +111,6 @@ class Morse {
     if (plaintext.isEmpty) {
       return '';
     }
-    return plaintext.substring(0, plaintext.length-1);
+    return plaintext.substring(0, plaintext.length - 1);
   }
 }

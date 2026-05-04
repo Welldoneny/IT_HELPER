@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget baconWidget(){
+Widget baconWidget() {
   return Column(
     children: [
       Text('Bacon Cipher'),

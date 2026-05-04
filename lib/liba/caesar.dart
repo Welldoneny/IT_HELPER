@@ -62,8 +62,7 @@ class Caesar {
   Shifts the value of the key alphabetically with a space, 
   ignoring all other characters
   */
-  String encryptWithSpaces(String plaintext, [int key = 3])
-  {
+  String encryptWithSpaces(String plaintext, [int key = 3]) {
     plaintext = plaintext.toUpperCase();
     String ciphertext = "";
     for (int i = 0; i < plaintext.length; i++) {
@@ -72,17 +71,18 @@ class Caesar {
       if (positionInAlphabet == -1) {
         continue;
       }
-      ciphertext += _alphabetWithSpace[(positionInAlphabet + key) % _alphabetWithSpace.length];
+      ciphertext +=
+          _alphabetWithSpace[(positionInAlphabet + key) %
+              _alphabetWithSpace.length];
     }
-    return ciphertext;    
+    return ciphertext;
   }
 
   /*
   Shifts back the value of the key alphabetically with a space, 
   ignoring all other characters
   */
-  String decryptWithSpaces(String ciphertext, [int key = 3])
-  {
+  String decryptWithSpaces(String ciphertext, [int key = 3]) {
     ciphertext = ciphertext.toUpperCase();
     String plaintext = "";
     for (int i = 0; i < ciphertext.length; i++) {
@@ -91,10 +91,13 @@ class Caesar {
       if (positionInAlphabet == -1) {
         continue;
       }
-      plaintext += _alphabetWithSpace[(positionInAlphabet - key) % _alphabetWithSpace.length];
+      plaintext +=
+          _alphabetWithSpace[(positionInAlphabet - key) %
+              _alphabetWithSpace.length];
     }
-    return plaintext;    
+    return plaintext;
   }
+
   /*
   Shifts letters back in the message by the number specified by the key,
   ignoring spaces and characters outside the alphabet
@@ -123,12 +126,11 @@ class Caesar {
     String plaintext = "";
     var cipherLetterFrequencies = getFrequencies(ciphertext);
     String cipherFrequencies = _mapToString(cipherLetterFrequencies);
-    for (int i = 0; i < ciphertext.length; i++){
-      if (_alphabet.contains(ciphertext[i])){
+    for (int i = 0; i < ciphertext.length; i++) {
+      if (_alphabet.contains(ciphertext[i])) {
         int position = cipherFrequencies.indexOf(ciphertext[i]);
         plaintext += _frequencies[position];
-      }
-      else{
+      } else {
         plaintext += ciphertext[i];
       }
     }
@@ -140,9 +142,9 @@ class Caesar {
   Computes the key by matching the position 
   of the most frequent letter with the letter E 
   */
-  String frequencyShift(String ciphertext, [int suggestion = 0]){
+  String frequencyShift(String ciphertext, [int suggestion = 0]) {
     var cipherLetterFrequencies = getFrequencies(ciphertext);
-    String cipherFrequencies = _mapToString(cipherLetterFrequencies); 
+    String cipherFrequencies = _mapToString(cipherLetterFrequencies);
 
     String firstChar = cipherFrequencies[suggestion];
     int position = _alphabet.indexOf(firstChar);
@@ -152,7 +154,7 @@ class Caesar {
   }
 
   // Converts frequency map to th string
-  String _mapToString(Map<String, double> map){
+  String _mapToString(Map<String, double> map) {
     List<MapEntry<String, double>> entries = map.entries.toList();
     entries.sort((a, b) => b.value.compareTo(a.value));
     String result = entries.map((e) => e.key).join();
@@ -162,23 +164,24 @@ class Caesar {
   /*
   Suggests that the articles the and a are the most frequent words
   */
-  String frequencyWord(String ciphertext){
+  String frequencyWord(String ciphertext) {
     String plaintext = "";
     ciphertext = ciphertext.toUpperCase();
     String withSpaces = ciphertext.replaceAll(RegExp(r'[^A-Z ]'), '');
     List<String> words = withSpaces.split(' ');
     List<String> topWords = [];
-    for (String word in words){
+    for (String word in words) {
       if (word.length == 1 || word.length == 3) {
         topWords.add(word);
       }
     }
     Map<String, int> topWordsFreq = _countWordFrequencies(topWords);
-    var sortedEntries = topWordsFreq.entries.toList()..sort((a, b) => b.value.compareTo(a.value));
+    var sortedEntries = topWordsFreq.entries.toList()
+      ..sort((a, b) => b.value.compareTo(a.value));
 
     String? oneLetterCipher;
     String? threeLetterCipher;
-    
+
     for (var entry in sortedEntries) {
       if (entry.key.length == 1 && oneLetterCipher == null) {
         oneLetterCipher = entry.key;
@@ -187,8 +190,8 @@ class Caesar {
         threeLetterCipher = entry.key;
       }
     }
-    int shift = _alphabet.indexOf(oneLetterCipher?? "A");
-    if ("THE" == decrypt(threeLetterCipher?? "THE", shift)){
+    int shift = _alphabet.indexOf(oneLetterCipher ?? "A");
+    if ("THE" == decrypt(threeLetterCipher ?? "THE", shift)) {
       plaintext = decrypt(ciphertext, shift);
     }
     return plaintext;
@@ -204,8 +207,9 @@ class Caesar {
     }
     return freq;
   }
+
   // Make map with frequencies in of letters in the text
-  Map<String, double> getFrequencies(String ciphertext){
+  Map<String, double> getFrequencies(String ciphertext) {
     ciphertext = ciphertext.toUpperCase();
     String cleanText = ciphertext.replaceAll(RegExp(r'[^A-Z]'), '');
     Map<String, double> cipherLetterFrequencies = {

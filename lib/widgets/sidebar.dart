@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
+
 enum Topic { greeting, caesar, bacon, digitCipher, morse }
 
-Widget sidebar(){
+Widget sidebar() {
   return ListView(
     children: [
-      ListTile(
-        title: Text('Caesar Cipher'),
-        onTap: () {
-
-        },
-      ),
+      ListTile(title: Text('Caesar Cipher'), onTap: () {}),
       ListTile(
         title: Text('Bacon Cipher'),
         onTap: () {
